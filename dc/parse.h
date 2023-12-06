@@ -1,9 +1,9 @@
 struct date_struct {
-    int year;
-    int month;
-    int day;
+    short int year;
+    short int month;
+    short int day;
 };
 
 typedef struct date_struct date;
 
-int is_num_only(char*);
+short int is_num_only(char*);

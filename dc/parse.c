@@ -4,7 +4,7 @@
 
 #include "parse.h"
 
-int is_num_only(char* string) {
+short int is_num_only(char* string) {
     while (*string != '\0') {
         if (isdigit(*string) == 0) {
             return 0;
