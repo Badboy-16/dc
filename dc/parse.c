@@ -1,5 +1,6 @@
 #include "parse.h"
 
+/* Check if a string only has numeric char */
 short int is_num_only(char* string) {
     while (*string != '\0') {
         if (isdigit(*string) == 0) {
@@ -10,6 +11,7 @@ short int is_num_only(char* string) {
     return 1;
 }
 
+/* Check if a year is leap year */
 short int is_leap_year(int year) {
     if (year % 4 != 0) {
         return 0;
@@ -25,6 +27,7 @@ short int is_leap_year(int year) {
     }
 }
 
+/* Parse and return the year from user input of yyyymmdd */
 short int get_year(char* input_date) {
     if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
         return FORMAT_ERROR_CODE;
@@ -38,6 +41,7 @@ short int get_year(char* input_date) {
     return year;
 }
 
+/* Parse and return the month from user input of yyyymmdd */
 short int get_month(char* input_date) {
     if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
         return FORMAT_ERROR_CODE;
@@ -54,6 +58,7 @@ short int get_month(char* input_date) {
     return month;
 }
 
+/* Parse and return the day from user input of yyyymmdd */
 short int get_day(char* input_date) {
     if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
         return FORMAT_ERROR_CODE;
@@ -96,6 +101,7 @@ short int get_day(char* input_date) {
     return day;
 }
 
+/* Construct a date struct from user input of yyyymmdd */
 date construct_date(char* input_date) {
     short int year = get_year(input_date);
     short int month = get_month(input_date);
@@ -107,6 +113,7 @@ date construct_date(char* input_date) {
     return date_struct;
 }
 
+/* Check if date struct is valid */
 int date_is_valid(date date_struct) {
     if (date_struct.year != FORMAT_ERROR_CODE && date_struct.month != FORMAT_ERROR_CODE && date_struct.day != FORMAT_ERROR_CODE) {
         return 1;
