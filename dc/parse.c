@@ -106,3 +106,10 @@ date construct_date(char* input_date) {
     date_struct.day = day;
     return date_struct;
 }
+
+int date_is_valid(date date_struct) {
+    if (date_struct.year != FORMAT_ERROR_CODE && date_struct.month != FORMAT_ERROR_CODE && date_struct.day != FORMAT_ERROR_CODE) {
+        return 1;
+    }
+    return 0;
+}
