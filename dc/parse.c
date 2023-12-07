@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "parse.h"
-
-#define FORMAT_ERROR_MSG "Wrong date format."
-#define YEAR_STR_LEN 4
-#define MONTH_STR_LEN 2
-#define DAY_STR_LEN 2
-#define FORMAT_ERROR_CODE -1
 
 short int is_num_only(char* string) {
     while (*string != '\0') {
