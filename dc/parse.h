@@ -7,3 +7,8 @@ struct date_struct {
 typedef struct date_struct date;
 
 short int is_num_only(char*);
+short int is_leap_year(int);
+short int get_year(char*);
+short int get_month(char*);
+short int get_day(char*);
+date construct_date(char*);
