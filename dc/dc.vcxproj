@@ -135,7 +135,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dc.c" />
+    <ClCompile Include="parse.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="parse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
