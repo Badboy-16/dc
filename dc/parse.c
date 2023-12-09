@@ -71,33 +71,13 @@ short int get_day(char* input_date) {
     day = atoi(day_str);
     short int year = get_year(input_date);
     short int month = get_month(input_date);
+    short int max_day = get_max_day(year, month);
     if (year == FORMAT_ERROR_CODE || month == FORMAT_ERROR_CODE) {
         return FORMAT_ERROR_CODE;
     }
-
-    if (month == 4 || month == 6 || month == 9 || month == 11) {
-        if (day < 1 || day > 30) {
-            return FORMAT_ERROR_CODE;
-        }
+    if (day < 1 || day > max_day) {
+        return FORMAT_ERROR_CODE;
     }
-    else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-        if (day < 1 || day > 31) {
-            return FORMAT_ERROR_CODE;
-        }
-    }
-    else if (month == 2) {
-        if (is_leap_year(year) == 1) {
-            if (day < 1 || day > 29) {
-                return FORMAT_ERROR_CODE;
-            }
-        }
-        else {
-            if (day < 1 || day > 28) {
-                return FORMAT_ERROR_CODE;
-            }
-        }
-    }
-
     return day;
 }
 
@@ -119,4 +99,25 @@ int date_is_valid(date date_struct) {
         return 1;
     }
     return 0;
+}
+
+/* Get the maximum number of days with a given year and a given month */
+short int get_max_day(short int year, short int month) {
+    if (month == 2) {
+        if (is_leap_year(year) == 1) {
+            return 29;
+        }
+        else {
+            return 28;
+        }
+    }
+    else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        return 30;
+    }
+    else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+        return 31;
+    }
+    else {
+        return FORMAT_ERROR_CODE;
+    }
 }
