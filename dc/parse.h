@@ -24,3 +24,4 @@ short int get_day(char*);
 date construct_date(char*);
 int date_is_valid(date);
 short int get_max_day(short int, short int);
+int calc_days_between(date, date);

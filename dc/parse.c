@@ -121,3 +121,35 @@ short int get_max_day(short int year, short int month) {
         return FORMAT_ERROR_CODE;
     }
 }
+
+/* Calculate the number of days between two dates (not inclusive) */
+int calc_days_between(date date_earlier, date date_later) {
+    short int year_earlier = date_earlier.year;
+    short int month_earlier = date_earlier.month;
+    short int day_earlier = date_earlier.day;
+    short int year_later = date_later.year;
+    short int month_later = date_later.month;
+    short int day_later = date_later.day;
+
+    int days_between = 0;
+
+    while ((year_earlier == year_later && month_earlier == month_later && day_earlier == day_later) == 0) {
+        if (day_earlier == get_max_day(year_earlier, month_earlier)) {
+            if (month_earlier == 12) {
+                year_earlier++;
+                month_earlier = 1;
+                day_earlier = 1;
+            }
+            else {
+                month_earlier++;
+                day_earlier = 1;
+            }
+            day_earlier = 1;
+        }
+        else {
+            day_earlier++;
+        }
+        days_between++;
+    }
+    return days_between;
+}
