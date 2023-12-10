@@ -83,13 +83,10 @@ short int get_day(char* input_date) {
 
 /* Construct a date struct from user input of yyyymmdd */
 date construct_date(char* input_date) {
-    short int year = get_year(input_date);
-    short int month = get_month(input_date);
-    short int day = get_day(input_date);
     date date_struct;
-    date_struct.year = year;
-    date_struct.month = month;
-    date_struct.day = day;
+    date_struct.year = get_year(input_date);
+    date_struct.month = get_month(input_date);
+    date_struct.day = get_day(input_date);
     return date_struct;
 }
 
