@@ -1,8 +1,8 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define FORMAT_ERROR_MSG "Wrong date format."
 #define YEAR_STR_LEN 4
 #define MONTH_STR_LEN 2
 #define DAY_STR_LEN 2
@@ -23,5 +23,6 @@ int get_year(char*);
 short int get_month(char*);
 short int get_day(char*);
 date construct_date(char*);
+short int date_struct_is_valid(date);
 short int get_max_day(int, short int);
 int calc_days_between(date, date);
