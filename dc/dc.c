@@ -1,4 +1,4 @@
-#include "parse.h"
+#include "dc.h"
 
 /* Check if a string only has numeric char */
 short int is_num_only(char* string) {
