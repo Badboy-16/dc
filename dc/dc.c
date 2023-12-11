@@ -170,3 +170,36 @@ int calc_days_between(date date_earlier, date date_later) {
     }
     return days_between;
 }
+
+int main() {
+    char* input_first_date = (char*) malloc(sizeof(char) * 9);
+    char* input_second_date = (char*) malloc(sizeof(char) * 9);
+    date first_date_struct;
+    date second_date_struct;
+    int result;
+
+    printf("Date count programme. Count number of days between two dates.\n");
+    printf("Enter the first date (earlier) in format yyyymmdd: ");
+    if (scanf("%s", input_first_date) != 1) {
+        return FORMAT_ERROR_CODE;
+    }
+    first_date_struct = construct_date(input_first_date);
+    if (date_struct_is_valid(first_date_struct) == 0) {
+        printf("Wrong format. Usage: yyyymmdd");
+        return FORMAT_ERROR_CODE;
+    }
+    printf("Enter the second date (later) in format yyyymmdd: ");
+    if (scanf("%s", input_second_date) != 1) {
+        return FORMAT_ERROR_CODE;
+    }
+    second_date_struct = construct_date(input_second_date);
+    if (date_struct_is_valid(second_date_struct) == 0) {
+        printf("Wrong format. Usage: yyyymmdd");
+        return FORMAT_ERROR_CODE;
+    }
+    result = calc_days_between(first_date_struct, second_date_struct);
+    printf("Number of days between them: %d.\n", result);
+    free(input_first_date);
+    free(input_second_date);
+    return 0;
+}
