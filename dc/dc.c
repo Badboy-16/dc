@@ -98,6 +98,15 @@ date construct_date(char* input_date) {
     return date_struct;
 }
 
+short int date_struct_is_valid(date date_struct) {
+    if (date_struct.year == FORMAT_ERROR_CODE ||
+        date_struct.month == FORMAT_ERROR_CODE ||
+        date_struct.day == FORMAT_ERROR_CODE) {
+        return 0;
+    }
+    return 1;
+}
+
 /* Get the maximum number of days with a given year and a given month */
 short int get_max_day(int year, short int month) {
     if (month == 2) {

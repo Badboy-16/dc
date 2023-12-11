@@ -23,5 +23,6 @@ int get_year(char*);
 short int get_month(char*);
 short int get_day(char*);
 date construct_date(char*);
+short int date_struct_is_valid(date);
 short int get_max_day(int, short int);
 int calc_days_between(date, date);
