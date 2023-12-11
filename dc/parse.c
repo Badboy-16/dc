@@ -27,9 +27,17 @@ short int is_leap_year(int year) {
     }
 }
 
+/* Check if string has exactly eight digits */
+short int is_eight_digits(char* input_date) {
+    if (strlen(input_date) == 8 && is_num_only(input_date) == 1) {
+        return 1;
+    }
+    return 0;
+}
+
 /* Parse and return the year from user input of yyyymmdd */
 short int get_year(char* input_date) {
-    if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
+    if (is_eight_digits(input_date) == 0) {
         return FORMAT_ERROR_CODE;
     }
     char year_str[YEAR_STR_LEN];
@@ -43,7 +51,7 @@ short int get_year(char* input_date) {
 
 /* Parse and return the month from user input of yyyymmdd */
 short int get_month(char* input_date) {
-    if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
+    if (is_eight_digits(input_date) == 0) {
         return FORMAT_ERROR_CODE;
     }
     char month_str[MONTH_STR_LEN];
@@ -60,7 +68,7 @@ short int get_month(char* input_date) {
 
 /* Parse and return the day from user input of yyyymmdd */
 short int get_day(char* input_date) {
-    if (strlen(input_date) != 8 || is_num_only(input_date) == 0) {
+    if (is_eight_digits(input_date) == 0) {
         return FORMAT_ERROR_CODE;
     }
     char day_str[DAY_STR_LEN];
