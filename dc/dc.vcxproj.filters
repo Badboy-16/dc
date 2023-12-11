@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="parse.c">
+    <ClCompile Include="dc.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="parse.h">
+    <ClInclude Include="dc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
