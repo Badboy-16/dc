@@ -108,10 +108,19 @@ short int get_max_day(int year, short int month) {
             return 28;
         }
     }
-    else if (month == 4 || month == 6 || month == 9 || month == 11) {
+    else if (month == 4 ||
+             month == 6 ||
+             month == 9 ||
+             month == 11) {
         return 30;
     }
-    else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+    else if (month == 1 ||
+             month == 3 ||
+             month == 5 ||
+             month == 7 ||
+             month == 8 ||
+             month == 10 ||
+             month == 12) {
         return 31;
     }
     else {
@@ -130,7 +139,9 @@ int calc_days_between(date date_earlier, date date_later) {
 
     int days_between = 0;
 
-    while ((year_earlier == year_later && month_earlier == month_later && day_earlier == day_later) == 0) {
+    while ((year_earlier == year_later &&
+            month_earlier == month_later &&
+            day_earlier == day_later) == 0) {
         if (day_earlier == get_max_day(year_earlier, month_earlier)) {
             if (month_earlier == 12) {
                 year_earlier++;
