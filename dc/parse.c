@@ -36,13 +36,13 @@ short int is_eight_digits(char* input_date) {
 }
 
 /* Parse and return the year from user input of yyyymmdd */
-short int get_year(char* input_date) {
+int get_year(char* input_date) {
     if (is_eight_digits(input_date) == 0) {
         return FORMAT_ERROR_CODE;
     }
     char year_str[YEAR_STR_LEN];
-    short int year;
-    for (int i = 0; i < 4; i++) {
+    int year;
+    for (short int i = 0; i < 4; i++) {
         year_str[i] = input_date[i];
     }
     year = atoi(year_str);
@@ -56,7 +56,7 @@ short int get_month(char* input_date) {
     }
     char month_str[MONTH_STR_LEN];
     short int month;
-    for (int i = 0; i < 2; i++) {
+    for (short int i = 0; i < 2; i++) {
         month_str[i] = input_date[i + 4];
     }
     month = atoi(month_str);
@@ -73,11 +73,11 @@ short int get_day(char* input_date) {
     }
     char day_str[DAY_STR_LEN];
     short int day;
-    for (int i = 0; i < 2; i++) {
+    for (short int i = 0; i < 2; i++) {
         day_str[i] = input_date[i + 6];
     }
     day = atoi(day_str);
-    short int year = get_year(input_date);
+    int year = get_year(input_date);
     short int month = get_month(input_date);
     short int max_day = get_max_day(year, month);
     if (year == FORMAT_ERROR_CODE || month == FORMAT_ERROR_CODE) {
@@ -99,7 +99,7 @@ date construct_date(char* input_date) {
 }
 
 /* Get the maximum number of days with a given year and a given month */
-short int get_max_day(short int year, short int month) {
+short int get_max_day(int year, short int month) {
     if (month == 2) {
         if (is_leap_year(year) == 1) {
             return 29;
@@ -121,10 +121,10 @@ short int get_max_day(short int year, short int month) {
 
 /* Calculate the number of days between two dates (not inclusive) */
 int calc_days_between(date date_earlier, date date_later) {
-    short int year_earlier = date_earlier.year;
+    int year_earlier = date_earlier.year;
     short int month_earlier = date_earlier.month;
     short int day_earlier = date_earlier.day;
-    short int year_later = date_later.year;
+    int year_later = date_later.year;
     short int month_later = date_later.month;
     short int day_later = date_later.day;
 
