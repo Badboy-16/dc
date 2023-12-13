@@ -60,7 +60,7 @@ short int get_month(char* input_date) {
         month_str[i] = input_date[i + 4];
     }
     month = atoi(month_str);
-    if (month < 1 || month > 12) {
+    if (month < 1 || month > MAX_MONTH) {
         return FORMAT_ERROR_CODE;
     }
     return month;
@@ -111,17 +111,17 @@ short int date_struct_is_valid(date date_struct) {
 short int get_max_day(int year, short int month) {
     if (month == 2) {
         if (is_leap_year(year) == 1) {
-            return 29;
+            return LEAP_FEB_DAYS;
         }
         else {
-            return 28;
+            return NORMAL_FEB_DAYS;
         }
     }
     else if (month == 4 ||
              month == 6 ||
              month == 9 ||
              month == 11) {
-        return 30;
+        return SHORT_MONTH_DAYS;
     }
     else if (month == 1 ||
              month == 3 ||
@@ -130,7 +130,7 @@ short int get_max_day(int year, short int month) {
              month == 8 ||
              month == 10 ||
              month == 12) {
-        return 31;
+        return LONG_MONTH_DAYS;
     }
     else {
         return FORMAT_ERROR_CODE;
@@ -152,7 +152,7 @@ int calc_days_between(date date_earlier, date date_later) {
             month_earlier == month_later &&
             day_earlier == day_later) == 0) {
         if (day_earlier == get_max_day(year_earlier, month_earlier)) {
-            if (month_earlier == 12) {
+            if (month_earlier == MAX_MONTH) {
                 year_earlier++;
                 month_earlier = 1;
                 day_earlier = 1;
@@ -178,27 +178,27 @@ int main() {
     date second_date_struct;
     int result;
 
-    printf("Date count programme. Count number of days between two dates.\n");
-    printf("Enter the first date (earlier) in format yyyymmdd: ");
+    printf(WELCOME_MSG);
+    printf(FIRST_DATE_INPUT);
     if (scanf("%s", input_first_date) != 1) {
         return FORMAT_ERROR_CODE;
     }
     first_date_struct = construct_date(input_first_date);
     if (date_struct_is_valid(first_date_struct) == 0) {
-        printf("Wrong format. Usage: yyyymmdd");
+        printf(WRONG_FORMAT_MSG);
         return FORMAT_ERROR_CODE;
     }
-    printf("Enter the second date (later) in format yyyymmdd: ");
+    printf(SECOND_DATE_INPUT);
     if (scanf("%s", input_second_date) != 1) {
         return FORMAT_ERROR_CODE;
     }
     second_date_struct = construct_date(input_second_date);
     if (date_struct_is_valid(second_date_struct) == 0) {
-        printf("Wrong format. Usage: yyyymmdd");
+        printf(WRONG_FORMAT_MSG);
         return FORMAT_ERROR_CODE;
     }
     result = calc_days_between(first_date_struct, second_date_struct);
-    printf("Number of days between them: %d.\n", result);
+    printf(RESULT_MSG, result);
     free(input_first_date);
     free(input_second_date);
     return 0;
