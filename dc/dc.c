@@ -60,7 +60,7 @@ short int get_month(char* input_date) {
         month_str[i] = input_date[i + 4];
     }
     month = atoi(month_str);
-    if (month < 1 || month > 12) {
+    if (month < 1 || month > MAX_MONTH) {
         return FORMAT_ERROR_CODE;
     }
     return month;
@@ -152,7 +152,7 @@ int calc_days_between(date date_earlier, date date_later) {
             month_earlier == month_later &&
             day_earlier == day_later) == 0) {
         if (day_earlier == get_max_day(year_earlier, month_earlier)) {
-            if (month_earlier == 12) {
+            if (month_earlier == MAX_MONTH) {
                 year_earlier++;
                 month_earlier = 1;
                 day_earlier = 1;

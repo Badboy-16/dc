@@ -7,6 +7,7 @@
 #define MONTH_STR_LEN 2
 #define DAY_STR_LEN 2
 #define FORMAT_ERROR_CODE -1
+#define MAX_MONTH 12
 
 struct date_struct {
     short int year;
