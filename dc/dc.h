@@ -8,6 +8,8 @@
 #define DAY_STR_LEN 2
 #define FORMAT_ERROR_CODE -1
 #define MAX_MONTH 12
+#define LEAP_FEB_DAYS 29
+#define NORMAL_FEB_DAYS 28
 
 struct date_struct {
     short int year;

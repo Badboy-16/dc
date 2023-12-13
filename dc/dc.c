@@ -111,10 +111,10 @@ short int date_struct_is_valid(date date_struct) {
 short int get_max_day(int year, short int month) {
     if (month == 2) {
         if (is_leap_year(year) == 1) {
-            return 29;
+            return LEAP_FEB_DAYS;
         }
         else {
-            return 28;
+            return NORMAL_FEB_DAYS;
         }
     }
     else if (month == 4 ||
