@@ -121,7 +121,7 @@ short int get_max_day(int year, short int month) {
              month == 6 ||
              month == 9 ||
              month == 11) {
-        return 30;
+        return SHORT_MONTH_DAYS;
     }
     else if (month == 1 ||
              month == 3 ||
@@ -130,7 +130,7 @@ short int get_max_day(int year, short int month) {
              month == 8 ||
              month == 10 ||
              month == 12) {
-        return 31;
+        return LONG_MONTH_DAYS;
     }
     else {
         return FORMAT_ERROR_CODE;
