@@ -13,6 +13,12 @@
 #define SHORT_MONTH_DAYS 30
 #define LONG_MONTH_DAYS 31
 
+#define WELCOME_MSG "Count number of days between two dates.\n"
+#define FIRST_DATE_INPUT "Enter the first date (earlier) in format yyyymmdd: "
+#define SECOND_DATE_INPUT "Enter the second date (later) in format yyyymmdd: "
+#define WRONG_FORMAT_MSG "Wrong format. Usage: yyyymmdd\n"
+#define RESULT_MSG "Number of days between them: %d.\n"
+
 struct date_struct {
     short int year;
     short int month;
